@@ -12,6 +12,7 @@ import {
 
 import { connect } from 'react-redux';
 import { addInfo } from '../actions/infoActions';
+import { addQuestion } from '../actions/questionActions';
 import PropTypes from 'prop-types';
 
 class QuestionModal extends React.Component {
@@ -47,15 +48,15 @@ class QuestionModal extends React.Component {
   onQuestionSubmit = (e) => {
     e.preventDefault();
 
-    // const newQuestion = {
-    //   question: this.state.question,
-    //   name: this.state.name,
-    //   phone: this.state.phone,
-    // };
+    const newQuestion = {
+      question: this.state.question,
+      name: this.state.name,
+      phone: this.state.phone,
+    };
 
     // Add item via addItem action
 
-    // this.props.addQuestion(newQuestion);
+    this.props.addQuestion(newQuestion);
 
     this.questionToggle();
   };
@@ -233,4 +234,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { addInfo })(QuestionModal);
+export default connect(mapStateToProps, { addQuestion , addInfo })(QuestionModal);
